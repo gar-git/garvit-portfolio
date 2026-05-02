@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
+import { UiClickSound } from "@/components/ui-click-sound";
 import { site } from "@/lib/site";
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({
       className={`dark scrollbar-themed scroll-smooth ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="scrollbar-themed flex min-h-full flex-col bg-background text-foreground">
+        <UiClickSound />
         {children}
       </body>
     </html>

@@ -30,6 +30,14 @@ function ProjectDetail({ project }: { project: ProjectSheet }) {
             {project.period}
           </p>
         ) : null}
+        {project.codeVisibility ? (
+          <Badge
+            variant="outline"
+            className="border-amber-500/45 bg-amber-500/10 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-200"
+          >
+            {project.codeVisibility}
+          </Badge>
+        ) : null}
         <DialogTitle className="text-left text-lg sm:text-xl">{project.title}</DialogTitle>
         <DialogDescription className="text-left text-[13px] leading-relaxed sm:text-[14px]">
           {project.summary}
@@ -120,7 +128,7 @@ export function ProjectsSection() {
             tint="violet"
             eyebrow="Primary focus"
             title="Production systems, not mockups"
-            description="Work programs, one personal playground (FlowDesk), and academic research—all described as systems: contracts, persistence, and tradeoffs—not hero screenshots."
+            description="Employer platforms and national programs ship under confidentiality—each card states code visibility upfront. FlowDesk is a personal build; academic work ties out to datasets and papers in the modal."
           />
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -155,6 +163,11 @@ export function ProjectsSection() {
                     {project.period ? (
                       <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-brand-amber">
                         {project.period}
+                      </p>
+                    ) : null}
+                    {project.codeVisibility ? (
+                      <p className="font-mono text-[10px] uppercase leading-snug tracking-[0.18em] text-amber-200/90">
+                        {project.codeVisibility}
                       </p>
                     ) : null}
                     <div className="flex flex-wrap gap-2">
@@ -202,19 +215,29 @@ export function ProjectsSection() {
 
           <Separator className="my-10 opacity-65" />
 
-          <div className="flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>
+          <div className="flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+            <p className="max-w-xl">
               Looking for code references? Point me to an NDA-safe sample and I will
               walk through design tradeoffs live.
             </p>
-            <Link
-              href={site.gitlab}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="font-mono text-xs uppercase tracking-[0.2em] text-brand-cyan underline-offset-8 transition-colors hover:text-brand-teal-muted hover:underline"
-            >
-              GitLab profile
-            </Link>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-[0.2em]">
+              <Link
+                href={site.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-brand-emerald underline-offset-8 transition-colors hover:text-brand-teal-muted hover:underline"
+              >
+                GitHub (@gar-git)
+              </Link>
+              <Link
+                href={site.gitlab}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-brand-cyan underline-offset-8 transition-colors hover:text-brand-teal-muted hover:underline"
+              >
+                GitLab profile
+              </Link>
+            </div>
           </div>
         </div>
 

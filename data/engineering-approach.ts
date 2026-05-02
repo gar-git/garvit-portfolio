@@ -1,3 +1,10 @@
+/** Short hooks moved from hero—engineering cards below go deeper */
+export const approachIntroBullets = [
+  "Reliable transactional APIs over cosmetic UI.",
+  "Operational clarity—logs, audits, repeatable deploys.",
+  "SQL you can defend in code review.",
+] as const;
+
 export const approachBlocks = [
   {
     title: "Structuring Node.js services",

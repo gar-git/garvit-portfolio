@@ -1,4 +1,4 @@
-import { approachBlocks } from "@/data/engineering-approach";
+import { approachBlocks, approachIntroBullets } from "@/data/engineering-approach";
 
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
@@ -31,6 +31,12 @@ export function EngineeringSection() {
             title="Engineering approach"
             description="Cards react on hover—the same layered thinking applies to repos: observable boundaries between HTTP, orchestration, and persistence."
           />
+
+          <ul className="mb-10 max-w-2xl space-y-2 border-l-2 border-brand-teal/40 pl-4 text-[14px] leading-relaxed text-muted-foreground">
+            {approachIntroBullets.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
 
           <div className="grid gap-6 md:grid-cols-2">
             {approachBlocks.map((block, index) => (

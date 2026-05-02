@@ -47,17 +47,17 @@ export function ExperienceSection() {
               </div>
 
               <ul className="relative mt-6 space-y-4 text-[15px] leading-relaxed text-muted-foreground">
-                {experience.highlights.map((item, index) => (
+                {experience.highlights.map((item) => (
                   <li
-                    key={item}
+                    key={item.label}
                     className="relative flex gap-3 rounded-lg border border-border/55 bg-muted/55 p-4 text-foreground/90 backdrop-blur transition-[border-color] duration-300 hover:border-brand-teal/45 hover:text-foreground"
                   >
                     <span className="mt-2 h-8 w-[3px] rounded-full bg-gradient-to-b from-brand-violet via-brand-teal to-brand-emerald" />
                     <div>
                       <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-amber">
-                        Impact {index + 1}
+                        {item.label}
                       </p>
-                      <p className="mt-1">{item}</p>
+                      <p className="mt-1">{item.body}</p>
                     </div>
                   </li>
                 ))}
@@ -93,6 +93,9 @@ export function ExperienceSection() {
                   </div>
                   <p className="mt-3 font-mono text-sm text-brand-cyan">
                     CGPA {education.cgpa}
+                  </p>
+                  <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground">
+                    {education.note}
                   </p>
                 </div>
                 <div className="shrink-0 font-mono text-[12px] uppercase tracking-[0.16em] text-muted-foreground sm:max-w-[12rem] sm:pt-0.5 sm:text-right">

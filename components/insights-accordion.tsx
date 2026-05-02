@@ -62,6 +62,17 @@ export function InsightsAccordion() {
                 <p className="text-[15px] leading-relaxed text-muted-foreground">
                   {article.summary}
                 </p>
+                {article.externalUrl ? (
+                  <a
+                    href={article.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-fit font-mono text-[11px] uppercase tracking-[0.2em] text-brand-cyan underline-offset-8 transition-colors hover:text-brand-teal-muted hover:underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Read full post ↗
+                  </a>
+                ) : null}
               </div>
               <motion.span
                 className="rounded-full bg-background/65 p-2 text-brand-teal shadow-inner ring-1 ring-border/60"
@@ -91,6 +102,18 @@ export function InsightsAccordion() {
                       {article.body.map((paragraph, i) => (
                         <p key={`${article.slug}-${i}`}>{paragraph}</p>
                       ))}
+                      {article.externalUrl ? (
+                        <p className="pt-1 font-mono text-[11px] text-muted-foreground">
+                          <a
+                            href={article.externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-brand-cyan underline-offset-8 hover:underline"
+                          >
+                            Open canonical version ↗
+                          </a>
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 </motion.div>

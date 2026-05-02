@@ -4,6 +4,8 @@ export type ProjectSheet = {
   id: ProjectId;
   title: string;
   summary: string;
+  /** Shown on card + modal—set expectations when there is no public repo/live demo */
+  codeVisibility?: string;
   tech: string[];
   period?: string;
   problem: string;
@@ -19,6 +21,7 @@ export const projects: ProjectSheet[] = [
   {
     id: "pmt-20",
     title: "PMT-2.0 · AHASolar Project Management Tool",
+    codeVisibility: "Employer · codebase under NDA",
     summary:
       "Backend platform powering 20+ EPC firms to automate end-to-end solar project workflows—with hundreds of guarded APIs under JWT + RBAC.",
     period: "February 2025 – Present",
@@ -65,6 +68,7 @@ export const projects: ProjectSheet[] = [
   {
     id: "pmsg",
     title: "PMSG · Pradhan Mantri Surya Ghar (national solar program)",
+    codeVisibility: "Employer · codebase under NDA",
     summary:
       "National-scale rollout touching vendor, DISCOM, and citizen journeys—cron-heavy reconciliation and tiered dashboards backed by guarded APIs.",
     period: "December 2023 – February 2025",
@@ -106,6 +110,7 @@ export const projects: ProjectSheet[] = [
   {
     id: "flowdesk",
     title: "FlowDesk · Team tasks, projects & hierarchy",
+    codeVisibility: "Personal repo · private (ask for sanitized walk-through)",
     summary:
       "A company-scoped workspace where admins onboard the org, teammates join with a company code, and everyone works tasks on a Kanban board—with projects, reporting lines, and role-aware permissions enforced on the API, not inferred in the UI alone.",
     period: "Personal project · ongoing",
@@ -170,6 +175,7 @@ export const projects: ProjectSheet[] = [
   {
     id: "islr",
     title: "Indian Sign Language Recognition (academic)",
+    codeVisibility: "Academic thesis · links to publications & dataset in modal",
     summary:
       "CNN-focused recognition stack with annotated ISL imagery—optimized for measurable real-time inference and academically reviewed results.",
     period: "November 2022 – June 2023",

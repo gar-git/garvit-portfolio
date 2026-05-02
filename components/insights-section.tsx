@@ -14,7 +14,7 @@ export function InsightsSection() {
             tint="cyan"
             eyebrow="Notes"
             title="Insights & writing"
-            description="Expandable accordion for quick skim vs deep dive—everything stays backend-first with concrete failure modes baked in."
+            description="On-site drafts you can skim or expand deeply. When syndicated externally, rows link out; until then anchors like #insight-… work for bookmarking threads."
           />
 
           <InsightsAccordion />

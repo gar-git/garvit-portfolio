@@ -38,9 +38,7 @@ const labelTone: Record<string, string> = {
 };
 
 export function ConceptCards() {
-  const [expanded, setExpanded] = useState<string | null>(
-    showcaseConcepts[0]?.title ?? null,
-  );
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
     <div className="grid gap-5 md:grid-cols-2">

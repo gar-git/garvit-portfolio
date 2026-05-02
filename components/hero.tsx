@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { site } from "@/lib/site";
 
+import { HeroPortrait } from "@/components/hero-portrait";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -30,121 +31,64 @@ export function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_40%,oklch(0.11_0.035_268/0.92)_100%)]" />
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:gap-14 sm:px-6 lg:grid-cols-[minmax(0,3fr)_minmax(260px,1fr)] lg:items-end lg:px-8">
-        <div className="space-y-6">
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={0}
-            className="font-mono text-xs uppercase tracking-[0.35em] text-brand-cyan"
-          >
-            Backend-heavy fullstack engineer
-          </motion.p>
-          <div className="space-y-3">
-            <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={1}
-              className={cn(
-                "font-heading text-4xl font-semibold tracking-tight sm:text-5xl",
-                "hero-gradient-text",
-              )}
-            >
-              {site.name}
-            </motion.h1>
+      <div className="mx-auto grid max-w-6xl gap-10 px-3 sm:gap-14 sm:px-4 lg:px-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-14">
+          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={0} className="shrink-0">
+            <HeroPortrait />
+          </motion.div>
+
+          <div className="min-w-0 flex-1 space-y-6">
             <motion.p
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              custom={2}
-              className="font-mono text-sm text-brand-teal-muted"
+              custom={1}
+              className="max-w-xl font-mono text-xs uppercase leading-relaxed tracking-[0.22em] text-brand-cyan"
             >
-              {site.title}
+              Backend-heavy full-stack engineer · Node.js · REST APIs · persistence
             </motion.p>
-          </div>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={3}
-            className="max-w-2xl text-[16px] leading-relaxed text-muted-foreground"
-          >
-            {site.tagline}
-          </motion.p>
 
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={4}
-            className="flex flex-wrap gap-3"
-          >
-            <Link
-              href="#projects"
-              className={cn(
-                buttonVariants({ size: "default", variant: "default" }),
-                "shadow-lg shadow-brand-teal/25 ring-1 ring-brand-teal/30 transition-all hover:shadow-xl hover:shadow-brand-teal/35 hover:ring-brand-teal/50 active:translate-y-px",
-              )}
+            <div className="space-y-3">
+              <motion.h1
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={2}
+                className={cn(
+                  "font-heading text-4xl font-semibold tracking-tight sm:text-5xl",
+                  "hero-gradient-text",
+                )}
+              >
+                {site.name}
+              </motion.h1>
+            </div>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={3}
+              className="max-w-2xl text-[16px] leading-relaxed text-muted-foreground"
             >
-              View Projects
-            </Link>
-            <Link
-              href={site.gitlab}
-              target="_blank"
-              rel="noreferrer noopener"
-              className={cn(
-                buttonVariants({ size: "default", variant: "outline" }),
-                "border-brand-teal/35 bg-background/40 text-foreground backdrop-blur-sm transition-all hover:border-brand-violet/50 hover:bg-accent/80 hover:text-foreground active:translate-y-px",
-              )}
-            >
-              GitLab
-            </Link>
-            <Link
-              href={site.resumePath}
-              download
-              prefetch={false}
-              className={cn(
-                buttonVariants({ size: "default", variant: "secondary" }),
-                "border border-transparent bg-brand-violet/20 text-brand-cyan backdrop-blur-sm transition-all hover:bg-brand-violet/30 hover:shadow-md hover:shadow-brand-violet/20 active:translate-y-px",
-              )}
-            >
-              Resume
-            </Link>
-          </motion.div>
+              {site.tagline}
+            </motion.p>
+
+            <motion.div variants={fadeUp} initial="hidden" animate="show" custom={4}>
+              <Link
+                href={site.resumePath}
+                download
+                prefetch={false}
+                className={cn(
+                  buttonVariants({ size: "default", variant: "secondary" }),
+                  "border border-transparent bg-brand-violet/20 text-brand-cyan backdrop-blur-sm transition-all hover:bg-brand-violet/30 hover:shadow-md hover:shadow-brand-violet/20 active:translate-y-px",
+                )}
+              >
+                Resume
+              </Link>
+            </motion.div>
+
+          </div>
         </div>
-
-        <motion.aside
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={5}
-          whileHover={{ y: -3, transition: { type: "spring", stiffness: 320, damping: 22 } }}
-          className="group relative border border-border/60 bg-card/55 p-5 font-mono text-[13px] text-muted-foreground shadow-lg shadow-brand-violet/5 ring-1 ring-brand-teal/15 backdrop-blur-md transition-colors hover:border-brand-teal/40 hover:shadow-brand-teal/10"
-        >
-          <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-br from-brand-teal/10 via-transparent to-brand-violet/12 opacity-0 transition-opacity group-hover:opacity-100" />
-          <div className="relative">
-            <p className="text-xs uppercase tracking-[0.25em] text-brand-cyan">
-              Focus
-            </p>
-            <ul className="mt-3 space-y-3 border-t border-border/60 pt-3">
-              {[
-                "Reliable transactional APIs over cosmetic UI.",
-                "Operational clarity — logs, audits, repeatable deploys.",
-                "SQL you can defend in code review.",
-              ].map((line) => (
-                <li key={line} className="flex gap-2">
-                  <span
-                    aria-hidden
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-teal shadow-[0_0_12px_oklch(0.65_0.14_174_/0.7)]"
-                  />
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.aside>
       </div>
     </div>
   );

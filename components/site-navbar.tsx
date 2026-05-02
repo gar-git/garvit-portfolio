@@ -68,41 +68,46 @@ export function SiteNavbar() {
         )}
       >
         <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-teal/75 to-transparent" />
-        <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 sm:px-6 lg:px-8">
-          <Link
-            href="#hero"
-            className="shrink-0 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:text-brand-cyan"
-          >
-            <span className="text-brand-teal">{site.name.split(" ")[0]}</span>{" "}
-            <span className="text-muted-foreground">/</span>{" "}
-            <span className="font-normal lowercase tracking-normal text-muted-foreground">
-              engineer
-            </span>
-          </Link>
+        <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-3.5 sm:gap-3 sm:px-4 lg:px-8">
+          <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:gap-4">
+            <Link
+              href="#hero"
+              className="-ml-0.5 shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:text-brand-cyan sm:text-xs sm:tracking-[0.18em]"
+            >
+              <span className="text-brand-teal">{site.name.split(" ")[0]}</span>{" "}
+              <span className="text-muted-foreground">/</span>{" "}
+              <span className="font-normal lowercase tracking-normal text-muted-foreground">
+                engineer
+              </span>
+            </Link>
 
-          <nav className="hidden flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-muted-foreground md:flex lg:gap-x-7">
-            {navItems.map((item) => {
-              const id = item.href.replace(/^#/, "");
-              const selected = activeId === id;
+            <nav
+              aria-label="Sections"
+              className="scrollbar-themed hidden min-w-0 flex-1 items-center gap-x-1.5 overflow-x-auto whitespace-nowrap py-0.5 text-[12px] text-muted-foreground md:flex lg:gap-x-2 lg:text-[13px]"
+            >
+              {navItems.map((item) => {
+                const id = item.href.replace(/^#/, "");
+                const selected = activeId === id;
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "relative rounded-full px-3 py-1.5 transition-all duration-300",
-                    selected
-                      ? "bg-brand-teal/16 text-brand-cyan ring-1 ring-brand-teal/45 shadow-[0_0_24px_-6px_oklch(0.55_0.14_174_/0.45)]"
-                      : "hover:bg-muted/65 hover:text-brand-cyan",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "relative shrink-0 rounded-full px-2 py-1.5 transition-all duration-300 sm:px-2.5 lg:px-3",
+                      selected
+                        ? "bg-brand-teal/16 text-brand-cyan ring-1 ring-brand-teal/45 shadow-[0_0_24px_-6px_oklch(0.55_0.14_174_/0.45)]"
+                        : "hover:bg-muted/65 hover:text-brand-cyan",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
 
-          <div className="ml-auto flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <Link
               href="#projects"
               className={cn(
@@ -112,22 +117,35 @@ export function SiteNavbar() {
             >
               Projects
             </Link>
-          <Link
-            href={site.gitlab}
-            target="_blank"
-            rel="noreferrer noopener"
-            className={cn(
-              buttonVariants({ size: "sm", variant: "outline" }),
-              "border-brand-teal/30 hover:border-brand-violet/40 hover:bg-accent/75",
-            )}
-          >
-            GitLab
-          </Link>
+            <Link
+              href={site.github}
+              target="_blank"
+              rel="noreferrer noopener"
+              title="GitHub — gar-git"
+              className={cn(
+                buttonVariants({ size: "sm", variant: "outline" }),
+                "hidden border-brand-emerald/35 sm:inline-flex hover:border-brand-emerald/55 hover:bg-accent/75",
+              )}
+            >
+              GitHub
+            </Link>
+            <Link
+              href={site.gitlab}
+              target="_blank"
+              rel="noreferrer noopener"
+              title="GitLab — primary delivery repos"
+              className={cn(
+                buttonVariants({ size: "sm", variant: "outline" }),
+                "border-brand-teal/30 hover:border-brand-violet/40 hover:bg-accent/75",
+              )}
+            >
+              GitLab
+            </Link>
           </div>
         </div>
 
         <div className="border-t border-border/50 md:hidden">
-          <div className="scrollbar-themed mx-auto flex max-w-6xl gap-x-5 gap-y-3 overflow-x-auto px-4 py-3 text-[13px] text-muted-foreground sm:px-6 lg:px-8">
+          <div className="scrollbar-themed mx-auto flex max-w-6xl gap-x-3 overflow-x-auto px-3 py-3 text-[13px] text-muted-foreground sm:gap-x-4 sm:px-4 lg:px-8">
             {navItems.map((item) => {
               const id = item.href.replace(/^#/, "");
               const selected = activeId === id;

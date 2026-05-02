@@ -8,39 +8,54 @@ import { cn } from "@/lib/utils";
 
 const toneStyles = {
   teal: "hover:border-brand-teal/65 hover:bg-brand-teal/12 hover:text-brand-cyan hover:shadow-xl hover:shadow-teal-500/15",
+  emerald:
+    "hover:border-brand-emerald/65 hover:bg-brand-emerald/12 hover:text-brand-emerald hover:shadow-xl hover:shadow-emerald-500/15",
   violet:
     "hover:border-brand-violet/65 hover:bg-brand-violet/12 hover:text-brand-violet hover:shadow-xl hover:shadow-violet-500/15",
   cyan: "hover:border-brand-cyan/65 hover:bg-brand-cyan/12 hover:text-brand-cyan hover:shadow-xl hover:shadow-sky-500/12",
 };
 
-const links = [
+type ContactLinkTone = keyof typeof toneStyles;
+
+type ContactLink = {
+  subtitle: string;
+  line: string;
+  href: string;
+  external: boolean;
+  tone: ContactLinkTone;
+  hint?: string;
+};
+
+const links: ContactLink[] = [
   {
-    subtitle: "GitLab",
+    subtitle: "GitHub · profile",
+    line: "github.com/gar-git",
+    href: site.github,
+    external: true,
+    tone: "emerald",
+    hint: "Public repos and snippets—what people usually open before a thread.",
+  },
+  {
+    subtitle: "GitLab · delivery",
     line: "gitlab.com/garvit-sharma",
     href: site.gitlab,
     external: true,
-    tone: "teal" as const,
+    tone: "teal",
+    hint: "Most employer and day-job repository history lands here.",
   },
   {
     subtitle: "LinkedIn",
     line: "linkedin.com/in/garvit-sharma26",
     href: site.linkedin,
     external: true,
-    tone: "violet" as const,
+    tone: "violet",
   },
   {
     subtitle: "Email",
     line: "sharma7garvit@gmail.com",
     href: site.email,
     external: true,
-    tone: "cyan" as const,
-  },
-  {
-    subtitle: "Phone",
-    line: site.phoneDisplay,
-    href: site.phoneHref,
-    external: false,
-    tone: "teal" as const,
+    tone: "cyan",
   },
 ];
 
@@ -58,18 +73,16 @@ export function ContactSection() {
                   Serious about APIs, transactional workflows, and keeping production databases
                   healthy? Reach out—the channels on the right match what is on my resume.
                 </p>
+                <p className="text-[13px] leading-relaxed text-muted-foreground/95">
+                  {site.codeHostingNote} Phone stays on my resume PDF—not published here—to cut cold
+                  spam.
+                </p>
                 <p className="text-sm">
                   Expect concrete threads (logs, SQL, rollout notes). No fluff decks.
                 </p>
                 <Separator className="my-6 bg-gradient-to-r from-transparent via-brand-teal/55 to-transparent" />
 
-                <p className="font-mono text-xs uppercase tracking-[0.25em] text-brand-cyan">
-                  Resume PDF
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Canonical file: <code className="font-mono text-brand-amber">{site.resumePath}</code>{" "}
-                  under <code className="font-mono text-brand-amber">public/</code>.
-                </p>
+                
                 <a
                   href={site.resumePath}
                   download
@@ -90,27 +103,31 @@ export function ContactSection() {
                 </p>
                 <div className="relative flex flex-col gap-3">
                   {links.map((link) => (
-                    <a
-                      key={`${link.subtitle}-${link.href}`}
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className={cn(
-                        buttonVariants({ variant: "outline", size: "lg" }),
-                        "justify-between gap-4 border-border/65 bg-muted/55 text-foreground transition-all hover:-translate-y-[2px]",
-                        toneStyles[link.tone],
-                      )}
-                    >
-                      <span className="flex flex-col gap-0.5 text-left">
-                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                          {link.subtitle}
+                    <div key={`${link.subtitle}-${link.href}`} className="space-y-1">
+                      <a
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                        className={cn(
+                          buttonVariants({ variant: "outline", size: "lg" }),
+                          "w-full justify-between gap-4 border-border/65 bg-muted/55 text-foreground transition-all hover:-translate-y-[2px]",
+                          toneStyles[link.tone],
+                        )}
+                      >
+                        <span className="flex flex-col gap-0.5 text-left">
+                          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                            {link.subtitle}
+                          </span>
+                          <span className="font-mono text-sm text-foreground/95">{link.line}</span>
                         </span>
-                        <span className="font-mono text-sm text-foreground/95">{link.line}</span>
-                      </span>
-                      <span className="font-mono text-[11px] text-muted-foreground shrink-0">
-                        {link.external ? "↗" : "⌗"}
-                      </span>
-                    </a>
+                        <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
+                          ↗
+                        </span>
+                      </a>
+                      {link.hint ? (
+                        <p className="pl-1 text-[11px] leading-snug text-muted-foreground">{link.hint}</p>
+                      ) : null}
+                    </div>
                   ))}
                 </div>
               </div>

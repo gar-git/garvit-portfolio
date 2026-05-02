@@ -1,4 +1,14 @@
-export const articles = [
+export type Article = {
+  slug: string;
+  title: string;
+  summary: string;
+  readMinutes: number;
+  body: string[];
+  /** Optional canonical post off-site—when set shows an external affordance */
+  externalUrl?: string;
+};
+
+export const articles: Article[] = [
   {
     slug: "idempotency-backend",
     title: "Idempotency in backend systems",
@@ -35,4 +45,4 @@ export const articles = [
       "Loops issuing single-row selects are refactoring signals. Batch lookups or reshape SQL with JOIN strategies your team can articulate in review—not magic ORM prefetch toggles nobody understands.",
     ],
   },
-] as const;
+];
