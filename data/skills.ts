@@ -42,4 +42,8 @@ export const skillGroups = [
     group: "Research / ML tooling",
     items: ["OpenCV", "TensorFlow", "CNN experimentation"],
   },
+  {
+    group: "Currently learning",
+    items: ["Spring Boot (learning — not production experience yet)"],
+  },
 ] as const;

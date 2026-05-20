@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import "./globals.css";
 
@@ -33,7 +34,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`dark scrollbar-themed scroll-smooth ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="scrollbar-themed flex min-h-full flex-col bg-background text-foreground">
+      <body
+        suppressHydrationWarning
+        className="scrollbar-themed flex min-h-full flex-col bg-background text-foreground"
+      >
+        {process.env.NODE_ENV === "development" ? (
+          <Script id="dev-perf-measure-guard" strategy="beforeInteractive">
+            {`(()=>{const m=performance.measure.bind(performance);performance.measure=function(...a){try{return m(...a)}catch(e){if(e instanceof TypeError&&String(e.message).includes("negative time stamp"))return;throw e}}})();`}
+          </Script>
+        ) : null}
         <UiClickSound />
         {children}
       </body>

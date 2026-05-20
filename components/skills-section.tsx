@@ -37,12 +37,7 @@ export function SkillsSection() {
         className="scroll-mt-32 border-b border-border/75 py-16 sm:py-20"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            tint="amber"
-            eyebrow="Stack"
-            title="Skills grouped for clarity—now with tactile panels"
-            description="Aligned with résumé groupings plus how they show up operationally—hover cues only, never vanity ratings."
-          />
+          <SectionHeader tint="amber" eyebrow="Stack" title="Grouped for clarity" />
 
           <dl className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {skillGroups.map((group, index) => {

@@ -1,11 +1,16 @@
 export const experience = {
-  company: "AHA Solar Technologies Limited",
+  company: "AHAsolar Technologies Limited",
   /** Served from /public */
   companyLogoSrc: "/aha-solar-logo.png",
   companyLogoAlt: "AHA Solar logo",
   role: "Software Development Engineer",
   location: "Ahmedabad, India",
   tenure: "September 2023 – Present",
+  /** Shown under the role line on the experience card */
+  relatedProjects: [
+    "PMT-2.0 · AHAsolar Project Management Tool",
+    "Pradhan Mantri Surya Ghar",
+  ],
   highlights: [
     {
       label: "Production scale",

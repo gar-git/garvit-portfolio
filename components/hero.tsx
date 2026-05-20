@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { site } from "@/lib/site";
@@ -45,7 +44,7 @@ export function Hero() {
               custom={1}
               className="max-w-xl font-mono text-xs uppercase leading-relaxed tracking-[0.22em] text-brand-cyan"
             >
-              Backend-heavy full-stack engineer · Node.js · REST APIs · persistence
+              Backend-heavy full-stack engineer · Node.js · REST APIs · persistence · System Design
             </motion.p>
 
             <div className="space-y-3">
@@ -74,17 +73,16 @@ export function Hero() {
             </motion.p>
 
             <motion.div variants={fadeUp} initial="hidden" animate="show" custom={4}>
-              <Link
+              <a
                 href={site.resumePath}
                 download
-                prefetch={false}
                 className={cn(
                   buttonVariants({ size: "default", variant: "secondary" }),
                   "border border-transparent bg-brand-violet/20 text-brand-cyan backdrop-blur-sm transition-all hover:bg-brand-violet/30 hover:shadow-md hover:shadow-brand-violet/20 active:translate-y-px",
                 )}
               >
                 Resume
-              </Link>
+              </a>
             </motion.div>
 
           </div>

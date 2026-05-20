@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 
-import { ShowcaseSection } from "@/components/showcase-section";
-import { ContactSection } from "@/components/contact-section";
-import { EngineeringSection } from "@/components/engineering-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { Hero } from "@/components/hero";
-import { InsightsSection } from "@/components/insights-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNavbar } from "@/components/site-navbar";
@@ -25,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default function Page() {
   return (
     <>
       <SiteNavbar />
@@ -33,12 +29,8 @@ export default function HomePage() {
       <main className="flex-1 pb-14">
         <Hero />
         <ProjectsSection />
-        <ShowcaseSection />
         <SkillsSection />
         <ExperienceSection />
-        <EngineeringSection />
-        <InsightsSection />
-        <ContactSection />
       </main>
 
       <SiteFooter />

@@ -16,37 +16,52 @@ export function ExperienceSection() {
           <div>
             <SectionHeader tint="violet" eyebrow="Work" title="Experience" />
 
-            <article className="group relative overflow-hidden rounded-xl border border-border/70 bg-card/65 p-6 shadow-xl backdrop-blur-md transition-colors duration-300 hover:border-brand-teal/45 hover:shadow-2xl hover:shadow-teal-500/10 sm:p-9">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_-10%,oklch(0.55_0.16_294_/0.3),transparent_55%)] opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+            <details className="group relative overflow-hidden rounded-xl border border-border/70 bg-card/65 shadow-xl backdrop-blur-md transition-[border-color,box-shadow] duration-300 open:border-brand-teal/45 open:shadow-2xl open:shadow-teal-500/10 hover:border-brand-teal/45">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_-10%,oklch(0.55_0.16_294_/0.3),transparent_55%)] opacity-90 transition-opacity duration-500 group-open:opacity-100" />
 
-              <div className="relative flex flex-wrap items-start justify-between gap-3 border-b border-dashed border-border/60 pb-6">
-                <div className="min-w-0">
-                  <div className="flex items-start gap-3 sm:items-center sm:gap-4">
-                    <span className="relative mt-0.5 flex size-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-[50%] bg-white p-1 shadow-sm ring-1 ring-border/50 sm:mt-0">
-                      <Image
-                        src={experience.companyLogoSrc}
-                        alt={experience.companyLogoAlt}
-                        width={48}
-                        height={48}
-                        className="h-9 w-9 object-contain sm:h-10 sm:w-10"
-                        sizes="48px"
-                        priority={false}
-                      />
-                    </span>
-                    <h3 className="font-heading text-xl font-semibold text-foreground transition-colors duration-300 group-hover:text-brand-cyan">
-                      {experience.company}
-                    </h3>
+              <summary className="relative cursor-pointer list-none p-6 marker:content-none sm:p-9 [&::-webkit-details-marker]:hidden">
+                <div className="flex items-start gap-3 sm:items-center sm:gap-4">
+                  <span className="relative mt-0.5 flex size-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-[50%] bg-white p-1 shadow-sm ring-1 ring-border/50 sm:mt-0">
+                    <Image
+                      src={experience.companyLogoSrc}
+                      alt={experience.companyLogoAlt}
+                      width={48}
+                      height={48}
+                      className="h-9 w-9 object-contain sm:h-10 sm:w-10"
+                      sizes="48px"
+                      priority={false}
+                    />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="font-heading text-xl font-semibold text-foreground transition-colors duration-300 group-open:text-brand-cyan">
+                        {experience.company}
+                      </h3>
+                      <span
+                        aria-hidden
+                        className="mt-1 shrink-0 font-mono text-sm text-muted-foreground transition-transform duration-300 group-open:rotate-180"
+                      >
+                        ▾
+                      </span>
+                    </div>
+                    <p className="mt-2 inline-flex rounded-full bg-brand-teal/12 px-3 py-1 font-mono text-sm text-brand-cyan ring-1 ring-brand-teal/40">
+                      {experience.role}
+                    </p>
+                    <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {experience.tenure} · {experience.location}
+                    </p>
+                    <ul className="mt-4 space-y-1.5 border-l-2 border-brand-teal/35 pl-3 text-[13px] leading-snug text-muted-foreground">
+                      {experience.relatedProjects.map((name) => (
+                        <li key={name} className="text-foreground/85">
+                          {name}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="mt-2 inline-flex rounded-full bg-brand-teal/12 px-3 py-1 font-mono text-sm text-brand-cyan ring-1 ring-brand-teal/40">
-                    {experience.role}
-                  </p>
-                  <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {experience.tenure} · {experience.location}
-                  </p>
                 </div>
-              </div>
+              </summary>
 
-              <ul className="relative mt-6 space-y-4 text-[15px] leading-relaxed text-muted-foreground">
+              <ul className="relative space-y-4 border-t border-dashed border-border/60 px-6 pt-6 pb-6 text-[15px] leading-relaxed text-muted-foreground sm:px-9 sm:pb-9">
                 {experience.highlights.map((item) => (
                   <li
                     key={item.label}
@@ -62,7 +77,7 @@ export function ExperienceSection() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </details>
           </div>
 
           <div id="education" className="scroll-mt-32">

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { navItems } from "@/data/nav";
@@ -11,11 +10,8 @@ import { cn } from "@/lib/utils";
 
 const sectionIds = [
   "projects",
-  "concepts",
   "skills",
   "experience",
-  "approach",
-  "insights",
   "contact",
 ] as const;
 
@@ -70,7 +66,7 @@ export function SiteNavbar() {
         <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-teal/75 to-transparent" />
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-3.5 sm:gap-3 sm:px-4 lg:px-8">
           <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:gap-4">
-            <Link
+            <a
               href="#hero"
               className="-ml-0.5 shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:text-brand-cyan sm:text-xs sm:tracking-[0.18em]"
             >
@@ -79,7 +75,7 @@ export function SiteNavbar() {
               <span className="font-normal lowercase tracking-normal text-muted-foreground">
                 engineer
               </span>
-            </Link>
+            </a>
 
             <nav
               aria-label="Sections"
@@ -90,7 +86,7 @@ export function SiteNavbar() {
                 const selected = activeId === id;
 
                 return (
-                  <Link
+                  <a
                     key={item.href}
                     href={item.href}
                     className={cn(
@@ -101,14 +97,14 @@ export function SiteNavbar() {
                     )}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 );
               })}
             </nav>
           </div>
 
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-            <Link
+            <a
               href="#projects"
               className={cn(
                 buttonVariants({ size: "sm", variant: "default" }),
@@ -116,8 +112,8 @@ export function SiteNavbar() {
               )}
             >
               Projects
-            </Link>
-            <Link
+            </a>
+            <a
               href={site.github}
               target="_blank"
               rel="noreferrer noopener"
@@ -128,8 +124,8 @@ export function SiteNavbar() {
               )}
             >
               GitHub
-            </Link>
-            <Link
+            </a>
+            <a
               href={site.gitlab}
               target="_blank"
               rel="noreferrer noopener"
@@ -140,7 +136,7 @@ export function SiteNavbar() {
               )}
             >
               GitLab
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -150,7 +146,7 @@ export function SiteNavbar() {
               const id = item.href.replace(/^#/, "");
               const selected = activeId === id;
               return (
-                <Link
+                <a
                   key={`m-${item.href}`}
                   href={item.href}
                   className={cn(
@@ -161,7 +157,7 @@ export function SiteNavbar() {
                   )}
                 >
                   {item.label}
-                </Link>
+                </a>
               );
             })}
           </div>

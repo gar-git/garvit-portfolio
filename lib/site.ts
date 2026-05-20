@@ -9,7 +9,4 @@ export const site = {
   github: process.env.NEXT_PUBLIC_GITHUB_URL ?? "https://github.com/gar-git",
   email: process.env.NEXT_PUBLIC_EMAIL ?? "mailto:sharma7garvit@gmail.com",
   resumePath: "/resume.pdf",
-  /** Shown in Contact / footer—balances GitLab (delivery) vs public GitHub profile */
-  codeHostingNote:
-    "GitLab is where most employer-backed delivery repos live; GitHub carries public coursework, OSS-style snapshots, and the profile recruiters often check first (@gar-git).",
 } as const;
