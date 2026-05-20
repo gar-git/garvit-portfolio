@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 import { projects, type ProjectSheet } from "@/data/projects";
-import { site } from "@/lib/site";
 
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
@@ -133,6 +132,7 @@ export function ProjectsSection() {
                   key={project.id}
                   layout
                   type="button"
+                  data-no-click-sound
                   aria-haspopup="dialog"
                   aria-label={`Open system view for ${project.title}`}
                   className={cn(

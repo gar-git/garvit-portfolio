@@ -14,7 +14,9 @@ function isButtonLikeTarget(target: EventTarget | null): boolean {
       "input[type='reset']:not(:disabled)",
     ].join(", "),
   );
-  return el !== null;
+  if (!el) return false;
+  if (el.closest("[data-no-click-sound]")) return false;
+  return true;
 }
 
 /** Short dual-impulse click (no external audio file; works after first user gesture). */
