@@ -17,7 +17,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 function ProjectDetail({ project }: { project: ProjectSheet }) {
@@ -206,10 +205,6 @@ export function ProjectsSection() {
               );
             })}
           </div>
-
-          <Separator className="my-10 opacity-65" />
-
-          
         </div>
 
         <Dialog
